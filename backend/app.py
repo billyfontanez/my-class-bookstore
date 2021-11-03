@@ -1,4 +1,4 @@
-from flask import Flack, request, jsonify
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
@@ -12,8 +12,8 @@ ma = Marshmallow(app)
 CORS(app)
 
 class Book(db.Model):
-    id = db.Column(db.Interger, primary_key=True
-    title = dbColumn(db.String, nullable=False, unique=True))
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False, unique=True)
     aither = db.Column(db.String, nullable=False)
     review = db.Column(db.String(144), nullable=False)
     genre = db.Column(db.String, nullable=True)
@@ -24,9 +24,12 @@ class Book(db.Model):
         self.review = review
         self.genre = genre
 
-class BookeSchema(ma.Schema):
+class BookSchema(ma.Schema):
     class Meta:
-        fields ("id", "title", "author", "review", "genre")
-        
-book_schema = BookeSchema()
+        fields = ("id", "title", "author", "review", "genre")
+
+book_schema = BookSchema()
 multiple_book_schema = BookSchema(many=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
