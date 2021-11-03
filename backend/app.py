@@ -24,4 +24,9 @@ class Book(db.Model):
         self.review = review
         self.genre = genre
 
+class BookeSchema(ma.Schema):
+    class Meta:
+        fields ("id", "title", "author", "review", "genre")
         
+book_schema = BookeSchema()
+multiple_book_schema = BookSchema(many=True)
