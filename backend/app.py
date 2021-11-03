@@ -31,5 +31,28 @@ class BookSchema(ma.Schema):
 book_schema = BookSchema()
 multiple_book_schema = BookSchema(many=True)
 
+@app.route("/book/add", methods=["POST"])
+def add_book():
+    if  request.content_type != "application/json":
+        return jsonify('Error: Data must be JSON')
+
+    post_data = request.get_json()
+    title = post_data.get('title')
+    author = post_data.get('author')
+    review = post_data.get('review')
+    genre = post_data.get('genre')
+
+    if title == None:
+        return jsonify("Error: Data must have a 'Title' key.")
+
+    if author == None:
+        return jsonify("Error: Data must hve an 'Author' key.")
+
+    new_book = Book(title, author, review, genre)
+    db.session.add(new_book)
+    db.session.commit()
+
+    return jsonify("Book Successfully Added")
+
 if __name__ == "__main__":
     app.run(debug=True)
