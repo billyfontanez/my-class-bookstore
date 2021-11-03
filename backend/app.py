@@ -10,3 +10,18 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "ap
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 CORS(app)
+
+class Book(db.Model):
+    id = db.Column(db.Interger, primary_key=True
+    title = dbColumn(db.String, nullable=False, unique=True))
+    aither = db.Column(db.String, nullable=False)
+    review = db.Column(db.String(144), nullable=False)
+    genre = db.Column(db.String, nullable=True)
+
+    def __init__(self, titlle, author, review, genre):
+        self.title = title
+        self.author = author
+        self.review = review
+        self.genre = genre
+
+        
