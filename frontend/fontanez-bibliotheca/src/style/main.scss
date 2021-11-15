@@ -1,0 +1,36 @@
+html {
+    font-size: 62.5%; // 1rem is 10px
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    overflow-x: hidden;
+    font-weight: normal;
+    font-family: 'montserrat';
+    background-image: url(../../static/assets/images/book-store-v-two.png);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+    margin-top: 2rem;
+    display: grid;
+    justify-items: center;
+}
+
+@import './Mixins.scss';
+@import './NavBar.scss';
+@import './Home.scss';
+@import './AddBook.scss';
+@import './SignUp.scss';
+@import './Book.scss';
